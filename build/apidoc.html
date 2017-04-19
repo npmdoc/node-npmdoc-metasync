@@ -1,0 +1,2597 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/metarhia/MetaSync#readme"
+
+    >metasync (v0.2.1)</a>
+</h1>
+<h4>Metasync is a Meta Async Programming Approach</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.metasync">module metasync</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.ConcurrentQueue">
+            function <span class="apidocSignatureSpan">metasync.</span>ConcurrentQueue
+            <span class="apidocSignatureSpan">( // ConcurrentQueue concurrency, // number of simultaneous and asynchronously executing tasks timeout // process timeout (optional)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.DataCollector">
+            function <span class="apidocSignatureSpan">metasync.</span>DataCollector
+            <span class="apidocSignatureSpan">( expected, // number of collect()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.DataCollector.super_">
+            function <span class="apidocSignatureSpan">metasync.</span>DataCollector.super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.KeyCollector">
+            function <span class="apidocSignatureSpan">metasync.</span>KeyCollector
+            <span class="apidocSignatureSpan">( // Key Collector keys, // array of keys, example: [&#x27;config&#x27;, &#x27;users&#x27;, &#x27;cities&#x27;] timeout // collect timeout (optional)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.cb">
+            function <span class="apidocSignatureSpan">metasync.</span>cb
+            <span class="apidocSignatureSpan">( // Wrap callback callback // function (optional)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.composition">
+            function <span class="apidocSignatureSpan">metasync.</span>composition
+            <span class="apidocSignatureSpan">( // Functional Asynchronous Composition fns, // array of function([data, ] callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.each">
+            function <span class="apidocSignatureSpan">metasync.</span>each
+            <span class="apidocSignatureSpan">( // Asynchronous each (iterate in parallel)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.filter">
+            function <span class="apidocSignatureSpan">metasync.</span>filter
+            <span class="apidocSignatureSpan">( // Asynchrous filter (iterate parallel)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.find">
+            function <span class="apidocSignatureSpan">metasync.</span>find
+            <span class="apidocSignatureSpan">( // Asynchronous find (iterate in series)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.for">
+            function <span class="apidocSignatureSpan">metasync.</span>for
+            <span class="apidocSignatureSpan">( // Create an ArrayChain instance array // start mutations from this data )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.map">
+            function <span class="apidocSignatureSpan">metasync.</span>map
+            <span class="apidocSignatureSpan">( // Asynchronous map (iterate parallel)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.parallel">
+            function <span class="apidocSignatureSpan">metasync.</span>parallel
+            <span class="apidocSignatureSpan">( // Parallel execution fns, // array of function([data, ] callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.reduce">
+            function <span class="apidocSignatureSpan">metasync.</span>reduce
+            <span class="apidocSignatureSpan">( // Asynchronous reduce items, // items - incoming array callback, // callback - function to be executed for each value in array // previous - value previously returned in the last iteration // current - current element being processed in the array // callback - callback for returning value back to function reduce // counter - index of the current element being processed in array // items - the array reduce was called upon done, // optional on done callback function(err, result)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.sequential">
+            function <span class="apidocSignatureSpan">metasync.</span>sequential
+            <span class="apidocSignatureSpan">( // Sequential execution fns, // array of function([data, ] callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.series">
+            function <span class="apidocSignatureSpan">metasync.</span>series
+            <span class="apidocSignatureSpan">( // Asynchronous series items, // incoming array fn, // function(value, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.throttle">
+            function <span class="apidocSignatureSpan">metasync.</span>throttle
+            <span class="apidocSignatureSpan">( // Function throttling timeout, // time interval fn, // function to be executed once per timeout args // arguments array for fn (optional)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.timeout">
+            function <span class="apidocSignatureSpan">metasync.</span>timeout
+            <span class="apidocSignatureSpan">( // Set timeout for function execution timeout, // time interval asyncFunction, // async function to be executed // done - callback function done // callback function on done )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan"></span>metasync</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">metasync.</span>ConcurrentQueue.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">metasync.</span>DataCollector.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">metasync.</span>DataCollector.super_.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">metasync.</span>KeyCollector.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.metasync.ConcurrentQueue">module metasync.ConcurrentQueue</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.ConcurrentQueue.ConcurrentQueue">
+            function <span class="apidocSignatureSpan">metasync.</span>ConcurrentQueue
+            <span class="apidocSignatureSpan">( // ConcurrentQueue concurrency, // number of simultaneous and asynchronously executing tasks timeout // process timeout (optional)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.metasync.ConcurrentQueue.prototype">module metasync.ConcurrentQueue.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.ConcurrentQueue.prototype.add">
+            function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>add
+            <span class="apidocSignatureSpan">( item // add item to queue )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.ConcurrentQueue.prototype.emit">
+            function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>emit
+            <span class="apidocSignatureSpan">( eventName, // event name err, // instance of Error data // attached data )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.ConcurrentQueue.prototype.next">
+            function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>next
+            <span class="apidocSignatureSpan">( item // process next item from queue )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.ConcurrentQueue.prototype.on">
+            function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>on
+            <span class="apidocSignatureSpan">( // ConcurrentQueue events: eventName, fn // on(&#x27;error&#x27;, function(err)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.ConcurrentQueue.prototype.pause">
+            function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>pause
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.ConcurrentQueue.prototype.resume">
+            function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>resume
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.ConcurrentQueue.prototype.stop">
+            function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>stop
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.metasync.DataCollector">module metasync.DataCollector</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.DataCollector.DataCollector">
+            function <span class="apidocSignatureSpan">metasync.</span>DataCollector
+            <span class="apidocSignatureSpan">( expected, // number of collect()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.DataCollector.super_">
+            function <span class="apidocSignatureSpan">metasync.DataCollector.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.metasync.DataCollector.prototype">module metasync.DataCollector.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.DataCollector.prototype.collect">
+            function <span class="apidocSignatureSpan">metasync.DataCollector.prototype.</span>collect
+            <span class="apidocSignatureSpan">( // Push data to collector key, // key in result data data // value or error instance )</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.metasync.DataCollector.super_">module metasync.DataCollector.super_</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.DataCollector.super_.super_">
+            function <span class="apidocSignatureSpan">metasync.DataCollector.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.metasync.DataCollector.super_.prototype">module metasync.DataCollector.super_.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.DataCollector.super_.prototype.emit">
+            function <span class="apidocSignatureSpan">metasync.DataCollector.super_.prototype.</span>emit
+            <span class="apidocSignatureSpan">( // Emit Collector events eventName, err, data )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.DataCollector.super_.prototype.on">
+            function <span class="apidocSignatureSpan">metasync.DataCollector.super_.prototype.</span>on
+            <span class="apidocSignatureSpan">( // Collector events: eventName, callback // on(&#x27;error&#x27;, function(err, key)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.metasync.KeyCollector">module metasync.KeyCollector</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.KeyCollector.KeyCollector">
+            function <span class="apidocSignatureSpan">metasync.</span>KeyCollector
+            <span class="apidocSignatureSpan">( // Key Collector keys, // array of keys, example: [&#x27;config&#x27;, &#x27;users&#x27;, &#x27;cities&#x27;] timeout // collect timeout (optional)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.KeyCollector.super_">
+            function <span class="apidocSignatureSpan">metasync.KeyCollector.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.metasync.KeyCollector.prototype">module metasync.KeyCollector.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.KeyCollector.prototype.collect">
+            function <span class="apidocSignatureSpan">metasync.KeyCollector.prototype.</span>collect
+            <span class="apidocSignatureSpan">( key, data )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.KeyCollector.prototype.pause">
+            function <span class="apidocSignatureSpan">metasync.KeyCollector.prototype.</span>pause
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.KeyCollector.prototype.resume">
+            function <span class="apidocSignatureSpan">metasync.KeyCollector.prototype.</span>resume
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.KeyCollector.prototype.stop">
+            function <span class="apidocSignatureSpan">metasync.KeyCollector.prototype.</span>stop
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.metasync.metasync">module metasync.metasync</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.ConcurrentQueue">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>ConcurrentQueue
+            <span class="apidocSignatureSpan">( // ConcurrentQueue concurrency, // number of simultaneous and asynchronously executing tasks timeout // process timeout (optional)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.DataCollector">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>DataCollector
+            <span class="apidocSignatureSpan">( expected, // number of collect()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.KeyCollector">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>KeyCollector
+            <span class="apidocSignatureSpan">( // Key Collector keys, // array of keys, example: [&#x27;config&#x27;, &#x27;users&#x27;, &#x27;cities&#x27;] timeout // collect timeout (optional)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.cb">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>cb
+            <span class="apidocSignatureSpan">( // Wrap callback callback // function (optional)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.composition">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>composition
+            <span class="apidocSignatureSpan">( // Functional Asynchronous Composition fns, // array of function([data, ] callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.each">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>each
+            <span class="apidocSignatureSpan">( // Asynchronous each (iterate in parallel)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.filter">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>filter
+            <span class="apidocSignatureSpan">( // Asynchrous filter (iterate parallel)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.find">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>find
+            <span class="apidocSignatureSpan">( // Asynchronous find (iterate in series)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.for">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>for
+            <span class="apidocSignatureSpan">( // Create an ArrayChain instance array // start mutations from this data )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.map">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>map
+            <span class="apidocSignatureSpan">( // Asynchronous map (iterate parallel)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.parallel">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>parallel
+            <span class="apidocSignatureSpan">( // Parallel execution fns, // array of function([data, ] callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.reduce">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>reduce
+            <span class="apidocSignatureSpan">( // Asynchronous reduce items, // items - incoming array callback, // callback - function to be executed for each value in array // previous - value previously returned in the last iteration // current - current element being processed in the array // callback - callback for returning value back to function reduce // counter - index of the current element being processed in array // items - the array reduce was called upon done, // optional on done callback function(err, result)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.sequential">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>sequential
+            <span class="apidocSignatureSpan">( // Sequential execution fns, // array of function([data, ] callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.series">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>series
+            <span class="apidocSignatureSpan">( // Asynchronous series items, // incoming array fn, // function(value, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.throttle">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>throttle
+            <span class="apidocSignatureSpan">( // Function throttling timeout, // time interval fn, // function to be executed once per timeout args // arguments array for fn (optional)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.metasync.metasync.timeout">
+            function <span class="apidocSignatureSpan">metasync.metasync.</span>timeout
+            <span class="apidocSignatureSpan">( // Set timeout for function execution timeout, // time interval asyncFunction, // async function to be executed // done - callback function done // callback function on done )</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.metasync" id="apidoc.module.metasync">module metasync</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.ConcurrentQueue" id="apidoc.element.metasync.ConcurrentQueue">
+        function <span class="apidocSignatureSpan">metasync.</span>ConcurrentQueue
+        <span class="apidocSignatureSpan">( // ConcurrentQueue concurrency, // number of simultaneous and asynchronously executing tasks timeout // process timeout (optional)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ConcurrentQueue = function ( // ConcurrentQueue concurrency, // number of simultaneous and asynchronously executing tasks timeout // process timeout (optional), for single item
+) {
+  this.isOnPause = false;
+  this.concurrency = concurrency;
+  this.timeout = timeout;
+  this.count = 0;
+  this.items = [];
+  this.events = {
+    error: null,
+    timeout: null,
+    empty: null,
+    process: null
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.DataCollector" id="apidoc.element.metasync.DataCollector">
+        function <span class="apidocSignatureSpan">metasync.</span>DataCollector
+        <span class="apidocSignatureSpan">( expected, // number of collect()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">DataCollector = function ( expected, // number of collect() calls expected
+  timeout // collect timeout (optional)
+) {
+  this.expected = expected;
+  this.timeout = timeout;
+  this.count = 0;
+  this.data = {};
+  this.errs = [];
+  this.events = {
+    error: null,
+    timeout: null,
+    done: null
+  };
+  const collector = this;
+  if (this.timeout) {
+    this.timer = setTimeout(() =&#x3e; {
+      const err = new Error(&#x27;DataCollector timeout&#x27;);
+      collector.emit(&#x27;timeout&#x27;, err, collector.data);
+    }, timeout);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## An Event-driven Asyncronous Data Collector
+
+```JavaScript
+var metasync = require(&#x27;metasync&#x27;);
+var fs = require(&#x27;fs&#x27;);
+
+var dataCollector = new metasync.<span class="apidocCodeKeywordSpan">DataCollector</span>(4, (data) =&#x3e; {
+console.dir(Object.keys(data));
+});
+
+dataCollector.collect(&#x27;user&#x27;, { name: &#x27;Marcus Aurelius&#x27; });
+
+fs.readFile(&#x27;HISTORY.md&#x27;, (err, data) =&#x3e; {
+dataCollector.collect(&#x27;history&#x27;, data);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.DataCollector.super_" id="apidoc.element.metasync.DataCollector.super_">
+        function <span class="apidocSignatureSpan">metasync.</span>DataCollector.super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Collector() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.KeyCollector" id="apidoc.element.metasync.KeyCollector">
+        function <span class="apidocSignatureSpan">metasync.</span>KeyCollector
+        <span class="apidocSignatureSpan">( // Key Collector keys, // array of keys, example: [&#x27;config&#x27;, &#x27;users&#x27;, &#x27;cities&#x27;] timeout // collect timeout (optional)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">KeyCollector = function ( // Key Collector keys, // array of keys, example: [&#x27;config&#x27;, &#x27;users&#x27;, &#x27;cities&#x27;] timeout // collect timeout (optional)
+) {
+  this.isDone = false;
+  this.keys = keys;
+  this.expected = keys.length;
+  this.count = 0;
+  this.timeout = timeout;
+  this.data = {};
+  this.errs = [];
+  this.events = {
+    error: null,
+    timeout: null,
+    done: null
+  };
+  const collector = this;
+  if (this.timeout) {
+    this.timer = setTimeout(() =&#x3e; {
+      const err = new Error(&#x27;KeyCollector timeout&#x27;);
+      collector.emit(&#x27;timeout&#x27;, err, collector.data);
+    }, timeout);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.cb" id="apidoc.element.metasync.cb">
+        function <span class="apidocSignatureSpan">metasync.</span>cb
+        <span class="apidocSignatureSpan">( // Wrap callback callback // function (optional)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Wrap callback callback // function (optional)
+) =&#x3e; {
+  let done = false;
+  const wrap = (...args) =&#x3e; {
+    if (done) return;
+    done = true;
+    callback(...args);
+  };
+  return callback ? wrap : api.common.falseness;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+//   err - error or null
+//   result - array result
+  ) =&#x3e; {
+const len = items.length;
+const result = new Array(len);
+let errored = false;
+let count = 0;
+done = api.metasync.<span class="apidocCodeKeywordSpan">cb</span>(done);
+
+items.forEach((item, index) =&#x3e; {
+  fn(item, (err, value) =&#x3e; {
+    if (errored) return;
+    if (err) {
+      errored = true;
+      return done(err);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.composition" id="apidoc.element.metasync.composition">
+        function <span class="apidocSignatureSpan">metasync.</span>composition
+        <span class="apidocSignatureSpan">( // Functional Asynchronous Composition fns, // array of function([data, ] callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Functional Asynchronous Composition fns, // array of function([data, ] callback)
+  // data - incoming data
+  // callback(data)
+  //   data - outgoing data
+  done, // callback(data)
+  // data - hash with of functions results
+  data // incoming data
+) =&#x3e; {
+  if (fns.length === 1) api.metasync.parallel(fns[0], done, data);
+  else api.metasync.sequential(fns, done, data);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+$ npm install metasync
+```
+
+# Examples
+
+## Functional Asyncronous Composition
+
+Syntax: `metasync.<span class="apidocCodeKeywordSpan">composition</span>(functions, [done, [data]]);`
+
+Parameters:
+- functions - array of `function([data,] callback)` where:
+  - data - optional incoming data
+  - callback - `function([data])` where:
+    - data - outgoing data
+- done - `callback(data)` where:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.each" id="apidoc.element.metasync.each">
+        function <span class="apidocSignatureSpan">metasync.</span>each
+        <span class="apidocSignatureSpan">( // Asynchronous each (iterate in parallel)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Asynchronous each (iterate in parallel)
+  items, // incoming array
+  fn, // function(value, callback)
+  // value - item from items array
+  // callback - callback function(accepted)
+  //   err - instance of Error or null
+  done // optional on done callback function(err)
+  //   err - error or null
+) =&#x3e; {
+  const len = items.length;
+  let count = 0;
+  let finished = false;
+  done = api.metasync.cb(done);
+
+  if (len &#x3c; 1) return done();
+  items.forEach((item) =&#x3e; {
+    fn(item, (err) =&#x3e; {
+      if (err instanceof Error) {
+        if (!finished) done(err);
+        finished = true;
+      } else {
+        count++;
+        if (count &#x3e;= len) done();
+      }
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+);
+```
+
+## Asyncronous each (parallel)
+
+```JavaScript
+metasync.<span class="apidocCodeKeywordSpan">each</span>(
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;],
+(item, callback) =&#x3e; {
+  console.dir({ each: item });
+  callback();
+},
+(data) =&#x3e; {
+  console.dir(&#x27;each done&#x27;);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.filter" id="apidoc.element.metasync.filter">
+        function <span class="apidocSignatureSpan">metasync.</span>filter
+        <span class="apidocSignatureSpan">( // Asynchrous filter (iterate parallel)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Asynchrous filter (iterate parallel)
+  items, // incoming array
+  fn, // function(value, callback)
+  // to be executed for each value in the array
+  //   value - item from items array
+  //   callback - function(err, accepted)
+  //     err - error or null
+  //     accepted - filtering result true/false
+  done // optional on done callback function(err, result)
+  //   err - error or null
+  //   result - array result
+) =&#x3e; {
+  const len = items.length;
+  let result = [];
+  let count = 0;
+  let errored = false;
+  done = api.metasync.cb(done);
+
+  function finish() {
+    // Callbacks might be called in any possible order,
+    // hence sort the filtered array
+    // by element&#x27;s index in the original itemsection
+    result.sort((x, y) =&#x3e; (x.index - y.index));
+
+    // Only value is needed in resulting array
+    result = result.map(x =&#x3e; x.value);
+
+    // Return a result using callback;
+    done(null, result);
+  }
+
+  items.forEach((value, index) =&#x3e; {
+    fn(value, (err, accepted) =&#x3e; {
+      if (errored) return;
+      if (err) {
+        errored = true;
+        return done(err);
+      }
+      if (accepted) result.push({ index, value });
+      count++;
+      if (count === len) finish();
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```JavaScript
+metasync.sequential([f1, f2, f3], () =&#x3e; { ... });
+```
+
+## Asynchrous filter
+
+```JavaScript
+metasync.<span class="apidocCodeKeywordSpan">filter</span>([&#x27;data&#x27;, &#x27;to&#x27;, &#x27;filter&#x27;], (item, callback
+) =&#x3e; {
+  callback(item.length &#x3e; 2);
+}, (result) =&#x3e; {
+  console.dir(result);
+});
+```
+
+## Asynchrous find
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.find" id="apidoc.element.metasync.find">
+        function <span class="apidocSignatureSpan">metasync.</span>find
+        <span class="apidocSignatureSpan">( // Asynchronous find (iterate in series)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Asynchronous find (iterate in series)
+  items, // incoming array
+  fn, // function(value, callback)
+  //   value - item from items array
+  //   callback - function(err, accepted)
+  //     err - error or null
+  //     accepted - true/false returned from fn
+  done // optional on done callback function(err, result)
+  //   err - error or null
+  //   result - array result
+) =&#x3e; {
+  const len = items.length;
+  let i = 0;
+  done = api.metasync.cb(done);
+
+  function next() {
+    if (i === len) return done();
+    fn(items[i], (err, accepted) =&#x3e; {
+      if (err) return done(err);
+      if (accepted) return done(items[i]);
+      i++;
+      next();
+    });
+  }
+
+  if (len &#x3e; 0) next();
+  else done();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.dir(result);
+});
+```
+
+## Asynchrous find
+
+```JavaScript
+metasync.<span class="apidocCodeKeywordSpan">find</span>(
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+(item, callback) =&#x3e; (
+  callback(item % 3 === 0 &#x26;&#x26; item % 5 === 0)
+),
+(result) =&#x3e; {
+  console.dir(result);
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.for" id="apidoc.element.metasync.for">
+        function <span class="apidocSignatureSpan">metasync.</span>for
+        <span class="apidocSignatureSpan">( // Create an ArrayChain instance array // start mutations from this data )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Create an ArrayChain instance array // start mutations from this data ) =&#x3e; (
+  new ArrayChain(array)
+)</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.map" id="apidoc.element.metasync.map">
+        function <span class="apidocSignatureSpan">metasync.</span>map
+        <span class="apidocSignatureSpan">( // Asynchronous map (iterate parallel)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Asynchronous map (iterate parallel)
+  items, // incoming array
+  fn, // function(current, callback)
+  // to be executed for each value in the array
+  //   current - current element being processed in the array
+  //   callback - function(err, accepted)
+  //     err - error or null
+  //     value - mapped item
+  done // optional on done callback function(err, result)
+  //   err - error or null
+  //   result - array result
+) =&#x3e; {
+  const len = items.length;
+  const result = new Array(len);
+  let errored = false;
+  let count = 0;
+  done = api.metasync.cb(done);
+
+  items.forEach((item, index) =&#x3e; {
+    fn(item, (err, value) =&#x3e; {
+      if (errored) return;
+      if (err) {
+        errored = true;
+        return done(err);
+      }
+      result[index] = value;
+      count++;
+      if (count === len) done(null, result);
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+&#x27;chain&#x27;, // Process arrays sync and async array in chain
+&#x27;collectors&#x27;, // DataCollector and KeyCollector
+&#x27;queue&#x27;, // Concurrency
+&#x27;throttle&#x27; // Throttling
+];
+
+submodules
+.<span class="apidocCodeKeywordSpan">map</span>(path =&#x3e; &#x27;./lib/&#x27; + path)
+.map(require)
+.map(exports =&#x3e; exports(api));
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.parallel" id="apidoc.element.metasync.parallel">
+        function <span class="apidocSignatureSpan">metasync.</span>parallel
+        <span class="apidocSignatureSpan">( // Parallel execution fns, // array of function([data, ] callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Parallel execution fns, // array of function([data, ] callback)
+  // data - incoming data
+  // callback - function(data)
+  //   data - outgoing data
+  done, // on done callback(data)
+  // data - hash with of functions results
+  data = {} // incoming data
+) =&#x3e; {
+  const len = fns.length;
+  let counter = 0;
+  let finished = false;
+  done = api.metasync.cb(done);
+
+  if (len &#x3c; 1) return done(data);
+  fns.forEach((fn) =&#x3e; {
+    const finish = (result) =&#x3e; {
+      if (fn.name &#x26;&#x26; result) data[fn.name] = result;
+      if (result instanceof Error) {
+        if (!finished) done(result);
+        finished = true;
+      } else if (++counter &#x3e;= len) {
+        done(data);
+      }
+    };
+    // fn may be array of function
+    if (Array.isArray(fn)) api.metasync.composition(fn, finish, data);
+    else if (fn.length === 2) fn(data, finish);
+    else fn(finish);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  dataCollector.collect(&#x27;timer&#x27;, { date: new Date() });
+}, 1000);
+```
+
+## Parallel execution
+
+```JavaScript
+metasync.<span class="apidocCodeKeywordSpan">parallel</span>([f1, f2, f3], () =&#x3e;  { ... });
+```
+
+## Sequential execution
+
+```JavaScript
+metasync.sequential([f1, f2, f3], () =&#x3e; { ... });
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.reduce" id="apidoc.element.metasync.reduce">
+        function <span class="apidocSignatureSpan">metasync.</span>reduce
+        <span class="apidocSignatureSpan">( // Asynchronous reduce items, // items - incoming array callback, // callback - function to be executed for each value in array // previous - value previously returned in the last iteration // current - current element being processed in the array // callback - callback for returning value back to function reduce // counter - index of the current element being processed in array // items - the array reduce was called upon done, // optional on done callback function(err, result)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Asynchronous reduce items, // items - incoming array callback, // callback - function to be executed for each value in array // previous - value previously returned in the last iteration // current - current element being processed in the array // callback - callback for returning value back to function reduce // counter - index of the current element being processed in array // items - the array reduce was called upon done, // optional on done callback function(err, result)
+  //   err - error or null
+  //   result - array result
+  initial // optional value to be used as first arpument in first iteration
+) =&#x3e; {
+  const len = items.length;
+  let count = typeof(initial) === &#x27;undefined&#x27; ? 1 : 0;
+  let previous = count === 1 ? items[0] : initial;
+  let current = items[count];
+  done = api.metasync.cb(done);
+
+  function response(err, data) {
+    if (err) return done(err);
+    if (count === len - 1) return done(null, data);
+    count++;
+    previous = data;
+    current = items[count];
+    callback(previous, current, response, count, items);
+  }
+
+  callback(previous, current, response, count, items);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.sequential" id="apidoc.element.metasync.sequential">
+        function <span class="apidocSignatureSpan">metasync.</span>sequential
+        <span class="apidocSignatureSpan">( // Sequential execution fns, // array of function([data, ] callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Sequential execution fns, // array of function([data, ] callback)
+  // data - incoming data
+  // callback - function(data)
+  //   data - outgoing data
+  done, // on done callback(data)
+  // data - hash with of functions results
+  data = {} // incoming data
+) =&#x3e; {
+  let i = -1;
+  const len = fns.length;
+  done = api.metasync.cb(done);
+
+  function next() {
+    let fn = null;
+    const finish = (result) =&#x3e; {
+      if (fn.name &#x26;&#x26; result) data[fn.name] = result;
+      if (result instanceof Error) return done(result);
+      next();
+    };
+    if (++i &#x3e;= len) return done(data);
+    fn = fns[i];
+    if (Array.isArray(fn)) api.metasync.composition(fn, finish, data);
+    else if (fn.length === 2) fn(data, finish);
+    else fn(finish);
+  }
+
+  if (len &#x3e; 0) next();
+  else done(data);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```JavaScript
+metasync.parallel([f1, f2, f3], () =&#x3e;  { ... });
+```
+
+## Sequential execution
+
+```JavaScript
+metasync.<span class="apidocCodeKeywordSpan">sequential</span>([f1, f2, f3], () =&#x3e; { ... });
+```
+
+## Asynchrous filter
+
+```JavaScript
+metasync.filter([&#x27;data&#x27;, &#x27;to&#x27;, &#x27;filter&#x27;], (item, callback) =&#x3e; {
+callback(item.length &#x3e; 2);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.series" id="apidoc.element.metasync.series">
+        function <span class="apidocSignatureSpan">metasync.</span>series
+        <span class="apidocSignatureSpan">( // Asynchronous series items, // incoming array fn, // function(value, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Asynchronous series items, // incoming array fn, // function(value, callback)
+  // value - item from items array
+  // callback - callback function(accepted)
+  //   err - instance of Error or null
+  done // optional on done callback function(err)
+  //   err - error or null
+) =&#x3e; {
+  const len = items.length;
+  let i = -1;
+  done = api.metasync.cb(done);
+
+  function next() {
+    i++;
+    if (i &#x3e;= len) return done();
+    fn(items[i], (err) =&#x3e; {
+      if (err instanceof Error) return done(err);
+      setImmediate(next);
+    });
+  }
+
+  next();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+);
+```
+
+## Asyncronous series (sequential)
+
+```JavaScript
+metasync.<span class="apidocCodeKeywordSpan">series</span>(
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;],
+(item, callback) =&#x3e; {
+  console.dir({ series: item });
+  callback();
+},
+(data) =&#x3e; {
+  console.dir(&#x27;series done&#x27;);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.throttle" id="apidoc.element.metasync.throttle">
+        function <span class="apidocSignatureSpan">metasync.</span>throttle
+        <span class="apidocSignatureSpan">( // Function throttling timeout, // time interval fn, // function to be executed once per timeout args // arguments array for fn (optional)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Function throttling timeout, // time interval fn, // function to be executed once per timeout args // arguments array for fn (optional)
+) =&#x3e; {
+  let timer = null;
+  let wait = false;
+  return function throttled() {
+    if (!timer) {
+      timer = setTimeout(() =&#x3e; {
+        timer = null;
+        if (wait) throttled();
+      }, timeout);
+      if (args) fn(...args);
+      else fn();
+      wait = false;
+    } else {
+      wait = true;
+    }
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.timeout" id="apidoc.element.metasync.timeout">
+        function <span class="apidocSignatureSpan">metasync.</span>timeout
+        <span class="apidocSignatureSpan">( // Set timeout for function execution timeout, // time interval asyncFunction, // async function to be executed // done - callback function done // callback function on done )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Set timeout for function execution timeout, // time interval asyncFunction, // async function to be executed // done - callback function done // callback function on done ) =&#x3e; {
+  let finished = false;
+  done = api.metasync.cb(done);
+
+  const timer = setTimeout(() =&#x3e; {
+    if (!finished) {
+      finished = true;
+      done();
+    }
+  }, timeout);
+
+  asyncFunction(() =&#x3e; {
+    if (!finished) {
+      clearTimeout(timer);
+      finished = true;
+      done();
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.metasync.ConcurrentQueue" id="apidoc.module.metasync.ConcurrentQueue">module metasync.ConcurrentQueue</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.ConcurrentQueue.ConcurrentQueue" id="apidoc.element.metasync.ConcurrentQueue.ConcurrentQueue">
+        function <span class="apidocSignatureSpan">metasync.</span>ConcurrentQueue
+        <span class="apidocSignatureSpan">( // ConcurrentQueue concurrency, // number of simultaneous and asynchronously executing tasks timeout // process timeout (optional)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ConcurrentQueue = function ( // ConcurrentQueue concurrency, // number of simultaneous and asynchronously executing tasks timeout // process timeout (optional), for single item
+) {
+  this.isOnPause = false;
+  this.concurrency = concurrency;
+  this.timeout = timeout;
+  this.count = 0;
+  this.items = [];
+  this.events = {
+    error: null,
+    timeout: null,
+    empty: null,
+    process: null
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.metasync.ConcurrentQueue.prototype" id="apidoc.module.metasync.ConcurrentQueue.prototype">module metasync.ConcurrentQueue.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.ConcurrentQueue.prototype.add" id="apidoc.element.metasync.ConcurrentQueue.prototype.add">
+        function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>add
+        <span class="apidocSignatureSpan">( item // add item to queue )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function ( item // add item to queue ) {
+  if (!this.isOnPause) {
+    if (this.count &#x3c; this.concurrency) this.next(item);
+    else this.items.push(item);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.ConcurrentQueue.prototype.emit" id="apidoc.element.metasync.ConcurrentQueue.prototype.emit">
+        function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>emit
+        <span class="apidocSignatureSpan">( eventName, // event name err, // instance of Error data // attached data )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">emit = function ( eventName, // event name err, // instance of Error data // attached data ) {
+  if (!this.isOnPause) {
+    const event = this.events[eventName];
+    if (event) event(err, data);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    timeout: null,
+    done: null
+  };
+  const collector = this;
+  if (this.timeout) {
+    this.timer = setTimeout(() =&#x3e; {
+      const err = new Error(&#x27;DataCollector timeout&#x27;);
+      collector.<span class="apidocCodeKeywordSpan">emit</span>(&#x27;timeout&#x27;, err, collector.data);
+    }, timeout);
+  }
+};
+
+api.util.inherits(api.metasync.DataCollector, Collector);
+
+api.metasync.DataCollector.prototype.collect = function(
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.ConcurrentQueue.prototype.next" id="apidoc.element.metasync.ConcurrentQueue.prototype.next">
+        function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>next
+        <span class="apidocSignatureSpan">( item // process next item from queue )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">next = function ( item // process next item from queue ) {
+  const queue = this;
+  let timer;
+  if (queue.isOnPause) return;
+  queue.count++;
+  if (queue.timeout) {
+    timer = setTimeout(() =&#x3e; {
+      const err = new Error(&#x27;ConcurrentQueue timed out&#x27;);
+      queue.emit(&#x27;timeout&#x27;, err);
+    }, queue.timeout);
+  }
+  const stub = (item, callback) =&#x3e; callback();
+  const fn = queue.events.process || stub;
+  fn(item, () =&#x3e; {
+    queue.count--;
+    if (queue.timeout) clearTimeout(timer);
+    if (queue.items.length &#x3e; 0) {
+      const item = queue.items.shift();
+      queue.next(item);
+    } else if (queue.count === 0) {
+      queue.emit(&#x27;empty&#x27;);
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  };
+};
+
+api.metasync.ConcurrentQueue.prototype.add = function(
+  item // add item to queue
+) {
+  if (!this.isOnPause) {
+    if (this.count &#x3c; this.concurrency) this.<span class="apidocCodeKeywordSpan">next</span>(item);
+    else this.items.push(item);
+  }
+};
+
+api.metasync.ConcurrentQueue.prototype.next = function(
+  item // process next item from queue
+) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.ConcurrentQueue.prototype.on" id="apidoc.element.metasync.ConcurrentQueue.prototype.on">
+        function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>on
+        <span class="apidocSignatureSpan">( // ConcurrentQueue events: eventName, fn // on(&#x27;error&#x27;, function(err)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">on = function ( // ConcurrentQueue events: eventName, fn // on(&#x27;error&#x27;, function(err))
+  // on(&#x27;empty&#x27;, function()) - no more items in queue
+  // on(&#x27;process&#x27;, function(item, callback)) - process item function
+  // on(&#x27;timeout&#x27;, function(err, data))
+) {
+  if (!this.isOnPause &#x26;&#x26; eventName in this.events) {
+    this.events[eventName] = fn;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.ConcurrentQueue.prototype.pause" id="apidoc.element.metasync.ConcurrentQueue.prototype.pause">
+        function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>pause
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function () {
+  this.isOnPause = true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.ConcurrentQueue.prototype.resume" id="apidoc.element.metasync.ConcurrentQueue.prototype.resume">
+        function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>resume
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function () {
+  this.isOnPause = false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.ConcurrentQueue.prototype.stop" id="apidoc.element.metasync.ConcurrentQueue.prototype.stop">
+        function <span class="apidocSignatureSpan">metasync.ConcurrentQueue.prototype.</span>stop
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stop = function () {
+  this.isOnPause = false;
+  this.concurrency = null;
+  this.timeout = null;
+  this.count = 0;
+  this.items = [];
+  this.events = {
+    error: null,
+    timeout: null,
+    empty: null,
+    process: null
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.metasync.DataCollector" id="apidoc.module.metasync.DataCollector">module metasync.DataCollector</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.DataCollector.DataCollector" id="apidoc.element.metasync.DataCollector.DataCollector">
+        function <span class="apidocSignatureSpan">metasync.</span>DataCollector
+        <span class="apidocSignatureSpan">( expected, // number of collect()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">DataCollector = function ( expected, // number of collect() calls expected
+  timeout // collect timeout (optional)
+) {
+  this.expected = expected;
+  this.timeout = timeout;
+  this.count = 0;
+  this.data = {};
+  this.errs = [];
+  this.events = {
+    error: null,
+    timeout: null,
+    done: null
+  };
+  const collector = this;
+  if (this.timeout) {
+    this.timer = setTimeout(() =&#x3e; {
+      const err = new Error(&#x27;DataCollector timeout&#x27;);
+      collector.emit(&#x27;timeout&#x27;, err, collector.data);
+    }, timeout);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## An Event-driven Asyncronous Data Collector
+
+```JavaScript
+var metasync = require(&#x27;metasync&#x27;);
+var fs = require(&#x27;fs&#x27;);
+
+var dataCollector = new metasync.<span class="apidocCodeKeywordSpan">DataCollector</span>(4, (data) =&#x3e; {
+console.dir(Object.keys(data));
+});
+
+dataCollector.collect(&#x27;user&#x27;, { name: &#x27;Marcus Aurelius&#x27; });
+
+fs.readFile(&#x27;HISTORY.md&#x27;, (err, data) =&#x3e; {
+dataCollector.collect(&#x27;history&#x27;, data);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.DataCollector.super_" id="apidoc.element.metasync.DataCollector.super_">
+        function <span class="apidocSignatureSpan">metasync.DataCollector.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Collector() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.metasync.DataCollector.prototype" id="apidoc.module.metasync.DataCollector.prototype">module metasync.DataCollector.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.DataCollector.prototype.collect" id="apidoc.element.metasync.DataCollector.prototype.collect">
+        function <span class="apidocSignatureSpan">metasync.DataCollector.prototype.</span>collect
+        <span class="apidocSignatureSpan">( // Push data to collector key, // key in result data data // value or error instance )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">collect = function ( // Push data to collector key, // key in result data data // value or error instance ) {
+  this.count++;
+  if (data instanceof Error) {
+    this.errs[key] = data;
+    this.emit(&#x27;error&#x27;, data, key);
+  } else {
+    this.data[key] = data;
+  }
+  if (this.expected === this.count) {
+    if (this.timer) clearTimeout(this.timer);
+    const errs = this.errs.length ? this.errs : null;
+    this.emit(&#x27;done&#x27;, errs, this.data);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var metasync = require(&#x27;metasync&#x27;);
+var fs = require(&#x27;fs&#x27;);
+
+var dataCollector = new metasync.DataCollector(4, (data) =&#x3e; {
+console.dir(Object.keys(data));
+});
+
+dataCollector.<span class="apidocCodeKeywordSpan">collect</span>(&#x27;user&#x27;, { name: &#x27;Marcus Aurelius&#x27; });
+
+fs.readFile(&#x27;HISTORY.md&#x27;, (err, data) =&#x3e; {
+dataCollector.collect(&#x27;history&#x27;, data);
+});
+
+fs.readFile(&#x27;README.md&#x27;, (err, data) =&#x3e; {
+dataCollector.collect(&#x27;readme&#x27;, data);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.metasync.DataCollector.super_" id="apidoc.module.metasync.DataCollector.super_">module metasync.DataCollector.super_</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.DataCollector.super_.super_" id="apidoc.element.metasync.DataCollector.super_.super_">
+        function <span class="apidocSignatureSpan">metasync.DataCollector.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Collector() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.metasync.DataCollector.super_.prototype" id="apidoc.module.metasync.DataCollector.super_.prototype">module metasync.DataCollector.super_.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.DataCollector.super_.prototype.emit" id="apidoc.element.metasync.DataCollector.super_.prototype.emit">
+        function <span class="apidocSignatureSpan">metasync.DataCollector.super_.prototype.</span>emit
+        <span class="apidocSignatureSpan">( // Emit Collector events eventName, err, data )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">emit = function ( // Emit Collector events eventName, err, data ) {
+  const event = this.events[eventName];
+  if (event) event(err, data);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    timeout: null,
+    done: null
+  };
+  const collector = this;
+  if (this.timeout) {
+    this.timer = setTimeout(() =&#x3e; {
+      const err = new Error(&#x27;DataCollector timeout&#x27;);
+      collector.<span class="apidocCodeKeywordSpan">emit</span>(&#x27;timeout&#x27;, err, collector.data);
+    }, timeout);
+  }
+};
+
+api.util.inherits(api.metasync.DataCollector, Collector);
+
+api.metasync.DataCollector.prototype.collect = function(
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.DataCollector.super_.prototype.on" id="apidoc.element.metasync.DataCollector.super_.prototype.on">
+        function <span class="apidocSignatureSpan">metasync.DataCollector.super_.prototype.</span>on
+        <span class="apidocSignatureSpan">( // Collector events: eventName, callback // on(&#x27;error&#x27;, function(err, key)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">on = function ( // Collector events: eventName, callback // on(&#x27;error&#x27;, function(err, key))
+  // on(&#x27;timeout&#x27;, function(err, data))
+  // on(&#x27;done&#x27;, function(errs, data))
+  //   errs - hash of errors
+  //   data - hash of sucessfully received adta
+) {
+  if (eventName in this.events) {
+    this.events[eventName] = callback;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.metasync.KeyCollector" id="apidoc.module.metasync.KeyCollector">module metasync.KeyCollector</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.KeyCollector.KeyCollector" id="apidoc.element.metasync.KeyCollector.KeyCollector">
+        function <span class="apidocSignatureSpan">metasync.</span>KeyCollector
+        <span class="apidocSignatureSpan">( // Key Collector keys, // array of keys, example: [&#x27;config&#x27;, &#x27;users&#x27;, &#x27;cities&#x27;] timeout // collect timeout (optional)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">KeyCollector = function ( // Key Collector keys, // array of keys, example: [&#x27;config&#x27;, &#x27;users&#x27;, &#x27;cities&#x27;] timeout // collect timeout (optional)
+) {
+  this.isDone = false;
+  this.keys = keys;
+  this.expected = keys.length;
+  this.count = 0;
+  this.timeout = timeout;
+  this.data = {};
+  this.errs = [];
+  this.events = {
+    error: null,
+    timeout: null,
+    done: null
+  };
+  const collector = this;
+  if (this.timeout) {
+    this.timer = setTimeout(() =&#x3e; {
+      const err = new Error(&#x27;KeyCollector timeout&#x27;);
+      collector.emit(&#x27;timeout&#x27;, err, collector.data);
+    }, timeout);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.KeyCollector.super_" id="apidoc.element.metasync.KeyCollector.super_">
+        function <span class="apidocSignatureSpan">metasync.KeyCollector.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Collector() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.metasync.KeyCollector.prototype" id="apidoc.module.metasync.KeyCollector.prototype">module metasync.KeyCollector.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.KeyCollector.prototype.collect" id="apidoc.element.metasync.KeyCollector.prototype.collect">
+        function <span class="apidocSignatureSpan">metasync.KeyCollector.prototype.</span>collect
+        <span class="apidocSignatureSpan">( key, data )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">collect = function ( key, data ) {
+  if (this.keys.includes(key)) {
+    this.count++;
+    if (data instanceof Error) {
+      this.errs[key] = data;
+      this.emit(&#x27;error&#x27;, data, key);
+    } else {
+      this.data[key] = data;
+    }
+    if (this.expected === this.count) {
+      if (this.timer) clearTimeout(this.timer);
+      const errs = this.errs.length ? this.errs : null;
+      this.emit(&#x27;done&#x27;, errs, this.data);
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var metasync = require(&#x27;metasync&#x27;);
+var fs = require(&#x27;fs&#x27;);
+
+var dataCollector = new metasync.DataCollector(4, (data) =&#x3e; {
+console.dir(Object.keys(data));
+});
+
+dataCollector.<span class="apidocCodeKeywordSpan">collect</span>(&#x27;user&#x27;, { name: &#x27;Marcus Aurelius&#x27; });
+
+fs.readFile(&#x27;HISTORY.md&#x27;, (err, data) =&#x3e; {
+dataCollector.collect(&#x27;history&#x27;, data);
+});
+
+fs.readFile(&#x27;README.md&#x27;, (err, data) =&#x3e; {
+dataCollector.collect(&#x27;readme&#x27;, data);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.KeyCollector.prototype.pause" id="apidoc.element.metasync.KeyCollector.prototype.pause">
+        function <span class="apidocSignatureSpan">metasync.KeyCollector.prototype.</span>pause
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function () {
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.KeyCollector.prototype.resume" id="apidoc.element.metasync.KeyCollector.prototype.resume">
+        function <span class="apidocSignatureSpan">metasync.KeyCollector.prototype.</span>resume
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function () {
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.KeyCollector.prototype.stop" id="apidoc.element.metasync.KeyCollector.prototype.stop">
+        function <span class="apidocSignatureSpan">metasync.KeyCollector.prototype.</span>stop
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stop = function () {
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.metasync.metasync" id="apidoc.module.metasync.metasync">module metasync.metasync</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.ConcurrentQueue" id="apidoc.element.metasync.metasync.ConcurrentQueue">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>ConcurrentQueue
+        <span class="apidocSignatureSpan">( // ConcurrentQueue concurrency, // number of simultaneous and asynchronously executing tasks timeout // process timeout (optional)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ConcurrentQueue = function ( // ConcurrentQueue concurrency, // number of simultaneous and asynchronously executing tasks timeout // process timeout (optional), for single item
+) {
+  this.isOnPause = false;
+  this.concurrency = concurrency;
+  this.timeout = timeout;
+  this.count = 0;
+  this.items = [];
+  this.events = {
+    error: null,
+    timeout: null,
+    empty: null,
+    process: null
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.DataCollector" id="apidoc.element.metasync.metasync.DataCollector">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>DataCollector
+        <span class="apidocSignatureSpan">( expected, // number of collect()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">DataCollector = function ( expected, // number of collect() calls expected
+  timeout // collect timeout (optional)
+) {
+  this.expected = expected;
+  this.timeout = timeout;
+  this.count = 0;
+  this.data = {};
+  this.errs = [];
+  this.events = {
+    error: null,
+    timeout: null,
+    done: null
+  };
+  const collector = this;
+  if (this.timeout) {
+    this.timer = setTimeout(() =&#x3e; {
+      const err = new Error(&#x27;DataCollector timeout&#x27;);
+      collector.emit(&#x27;timeout&#x27;, err, collector.data);
+    }, timeout);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## An Event-driven Asyncronous Data Collector
+
+```JavaScript
+var metasync = require(&#x27;metasync&#x27;);
+var fs = require(&#x27;fs&#x27;);
+
+var dataCollector = new metasync.<span class="apidocCodeKeywordSpan">DataCollector</span>(4, (data) =&#x3e; {
+console.dir(Object.keys(data));
+});
+
+dataCollector.collect(&#x27;user&#x27;, { name: &#x27;Marcus Aurelius&#x27; });
+
+fs.readFile(&#x27;HISTORY.md&#x27;, (err, data) =&#x3e; {
+dataCollector.collect(&#x27;history&#x27;, data);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.KeyCollector" id="apidoc.element.metasync.metasync.KeyCollector">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>KeyCollector
+        <span class="apidocSignatureSpan">( // Key Collector keys, // array of keys, example: [&#x27;config&#x27;, &#x27;users&#x27;, &#x27;cities&#x27;] timeout // collect timeout (optional)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">KeyCollector = function ( // Key Collector keys, // array of keys, example: [&#x27;config&#x27;, &#x27;users&#x27;, &#x27;cities&#x27;] timeout // collect timeout (optional)
+) {
+  this.isDone = false;
+  this.keys = keys;
+  this.expected = keys.length;
+  this.count = 0;
+  this.timeout = timeout;
+  this.data = {};
+  this.errs = [];
+  this.events = {
+    error: null,
+    timeout: null,
+    done: null
+  };
+  const collector = this;
+  if (this.timeout) {
+    this.timer = setTimeout(() =&#x3e; {
+      const err = new Error(&#x27;KeyCollector timeout&#x27;);
+      collector.emit(&#x27;timeout&#x27;, err, collector.data);
+    }, timeout);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.cb" id="apidoc.element.metasync.metasync.cb">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>cb
+        <span class="apidocSignatureSpan">( // Wrap callback callback // function (optional)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Wrap callback callback // function (optional)
+) =&#x3e; {
+  let done = false;
+  const wrap = (...args) =&#x3e; {
+    if (done) return;
+    done = true;
+    callback(...args);
+  };
+  return callback ? wrap : api.common.falseness;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+//   err - error or null
+//   result - array result
+  ) =&#x3e; {
+const len = items.length;
+const result = new Array(len);
+let errored = false;
+let count = 0;
+done = api.metasync.<span class="apidocCodeKeywordSpan">cb</span>(done);
+
+items.forEach((item, index) =&#x3e; {
+  fn(item, (err, value) =&#x3e; {
+    if (errored) return;
+    if (err) {
+      errored = true;
+      return done(err);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.composition" id="apidoc.element.metasync.metasync.composition">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>composition
+        <span class="apidocSignatureSpan">( // Functional Asynchronous Composition fns, // array of function([data, ] callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Functional Asynchronous Composition fns, // array of function([data, ] callback)
+  // data - incoming data
+  // callback(data)
+  //   data - outgoing data
+  done, // callback(data)
+  // data - hash with of functions results
+  data // incoming data
+) =&#x3e; {
+  if (fns.length === 1) api.metasync.parallel(fns[0], done, data);
+  else api.metasync.sequential(fns, done, data);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+$ npm install metasync
+```
+
+# Examples
+
+## Functional Asyncronous Composition
+
+Syntax: `metasync.<span class="apidocCodeKeywordSpan">composition</span>(functions, [done, [data]]);`
+
+Parameters:
+- functions - array of `function([data,] callback)` where:
+  - data - optional incoming data
+  - callback - `function([data])` where:
+    - data - outgoing data
+- done - `callback(data)` where:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.each" id="apidoc.element.metasync.metasync.each">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>each
+        <span class="apidocSignatureSpan">( // Asynchronous each (iterate in parallel)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Asynchronous each (iterate in parallel)
+  items, // incoming array
+  fn, // function(value, callback)
+  // value - item from items array
+  // callback - callback function(accepted)
+  //   err - instance of Error or null
+  done // optional on done callback function(err)
+  //   err - error or null
+) =&#x3e; {
+  const len = items.length;
+  let count = 0;
+  let finished = false;
+  done = api.metasync.cb(done);
+
+  if (len &#x3c; 1) return done();
+  items.forEach((item) =&#x3e; {
+    fn(item, (err) =&#x3e; {
+      if (err instanceof Error) {
+        if (!finished) done(err);
+        finished = true;
+      } else {
+        count++;
+        if (count &#x3e;= len) done();
+      }
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+);
+```
+
+## Asyncronous each (parallel)
+
+```JavaScript
+metasync.<span class="apidocCodeKeywordSpan">each</span>(
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;],
+(item, callback) =&#x3e; {
+  console.dir({ each: item });
+  callback();
+},
+(data) =&#x3e; {
+  console.dir(&#x27;each done&#x27;);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.filter" id="apidoc.element.metasync.metasync.filter">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>filter
+        <span class="apidocSignatureSpan">( // Asynchrous filter (iterate parallel)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Asynchrous filter (iterate parallel)
+  items, // incoming array
+  fn, // function(value, callback)
+  // to be executed for each value in the array
+  //   value - item from items array
+  //   callback - function(err, accepted)
+  //     err - error or null
+  //     accepted - filtering result true/false
+  done // optional on done callback function(err, result)
+  //   err - error or null
+  //   result - array result
+) =&#x3e; {
+  const len = items.length;
+  let result = [];
+  let count = 0;
+  let errored = false;
+  done = api.metasync.cb(done);
+
+  function finish() {
+    // Callbacks might be called in any possible order,
+    // hence sort the filtered array
+    // by element&#x27;s index in the original itemsection
+    result.sort((x, y) =&#x3e; (x.index - y.index));
+
+    // Only value is needed in resulting array
+    result = result.map(x =&#x3e; x.value);
+
+    // Return a result using callback;
+    done(null, result);
+  }
+
+  items.forEach((value, index) =&#x3e; {
+    fn(value, (err, accepted) =&#x3e; {
+      if (errored) return;
+      if (err) {
+        errored = true;
+        return done(err);
+      }
+      if (accepted) result.push({ index, value });
+      count++;
+      if (count === len) finish();
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```JavaScript
+metasync.sequential([f1, f2, f3], () =&#x3e; { ... });
+```
+
+## Asynchrous filter
+
+```JavaScript
+metasync.<span class="apidocCodeKeywordSpan">filter</span>([&#x27;data&#x27;, &#x27;to&#x27;, &#x27;filter&#x27;], (item, callback
+) =&#x3e; {
+  callback(item.length &#x3e; 2);
+}, (result) =&#x3e; {
+  console.dir(result);
+});
+```
+
+## Asynchrous find
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.find" id="apidoc.element.metasync.metasync.find">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>find
+        <span class="apidocSignatureSpan">( // Asynchronous find (iterate in series)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Asynchronous find (iterate in series)
+  items, // incoming array
+  fn, // function(value, callback)
+  //   value - item from items array
+  //   callback - function(err, accepted)
+  //     err - error or null
+  //     accepted - true/false returned from fn
+  done // optional on done callback function(err, result)
+  //   err - error or null
+  //   result - array result
+) =&#x3e; {
+  const len = items.length;
+  let i = 0;
+  done = api.metasync.cb(done);
+
+  function next() {
+    if (i === len) return done();
+    fn(items[i], (err, accepted) =&#x3e; {
+      if (err) return done(err);
+      if (accepted) return done(items[i]);
+      i++;
+      next();
+    });
+  }
+
+  if (len &#x3e; 0) next();
+  else done();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.dir(result);
+});
+```
+
+## Asynchrous find
+
+```JavaScript
+metasync.<span class="apidocCodeKeywordSpan">find</span>(
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+(item, callback) =&#x3e; (
+  callback(item % 3 === 0 &#x26;&#x26; item % 5 === 0)
+),
+(result) =&#x3e; {
+  console.dir(result);
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.for" id="apidoc.element.metasync.metasync.for">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>for
+        <span class="apidocSignatureSpan">( // Create an ArrayChain instance array // start mutations from this data )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Create an ArrayChain instance array // start mutations from this data ) =&#x3e; (
+  new ArrayChain(array)
+)</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.map" id="apidoc.element.metasync.metasync.map">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>map
+        <span class="apidocSignatureSpan">( // Asynchronous map (iterate parallel)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Asynchronous map (iterate parallel)
+  items, // incoming array
+  fn, // function(current, callback)
+  // to be executed for each value in the array
+  //   current - current element being processed in the array
+  //   callback - function(err, accepted)
+  //     err - error or null
+  //     value - mapped item
+  done // optional on done callback function(err, result)
+  //   err - error or null
+  //   result - array result
+) =&#x3e; {
+  const len = items.length;
+  const result = new Array(len);
+  let errored = false;
+  let count = 0;
+  done = api.metasync.cb(done);
+
+  items.forEach((item, index) =&#x3e; {
+    fn(item, (err, value) =&#x3e; {
+      if (errored) return;
+      if (err) {
+        errored = true;
+        return done(err);
+      }
+      result[index] = value;
+      count++;
+      if (count === len) done(null, result);
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+&#x27;chain&#x27;, // Process arrays sync and async array in chain
+&#x27;collectors&#x27;, // DataCollector and KeyCollector
+&#x27;queue&#x27;, // Concurrency
+&#x27;throttle&#x27; // Throttling
+];
+
+submodules
+.<span class="apidocCodeKeywordSpan">map</span>(path =&#x3e; &#x27;./lib/&#x27; + path)
+.map(require)
+.map(exports =&#x3e; exports(api));
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.parallel" id="apidoc.element.metasync.metasync.parallel">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>parallel
+        <span class="apidocSignatureSpan">( // Parallel execution fns, // array of function([data, ] callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Parallel execution fns, // array of function([data, ] callback)
+  // data - incoming data
+  // callback - function(data)
+  //   data - outgoing data
+  done, // on done callback(data)
+  // data - hash with of functions results
+  data = {} // incoming data
+) =&#x3e; {
+  const len = fns.length;
+  let counter = 0;
+  let finished = false;
+  done = api.metasync.cb(done);
+
+  if (len &#x3c; 1) return done(data);
+  fns.forEach((fn) =&#x3e; {
+    const finish = (result) =&#x3e; {
+      if (fn.name &#x26;&#x26; result) data[fn.name] = result;
+      if (result instanceof Error) {
+        if (!finished) done(result);
+        finished = true;
+      } else if (++counter &#x3e;= len) {
+        done(data);
+      }
+    };
+    // fn may be array of function
+    if (Array.isArray(fn)) api.metasync.composition(fn, finish, data);
+    else if (fn.length === 2) fn(data, finish);
+    else fn(finish);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  dataCollector.collect(&#x27;timer&#x27;, { date: new Date() });
+}, 1000);
+```
+
+## Parallel execution
+
+```JavaScript
+metasync.<span class="apidocCodeKeywordSpan">parallel</span>([f1, f2, f3], () =&#x3e;  { ... });
+```
+
+## Sequential execution
+
+```JavaScript
+metasync.sequential([f1, f2, f3], () =&#x3e; { ... });
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.reduce" id="apidoc.element.metasync.metasync.reduce">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>reduce
+        <span class="apidocSignatureSpan">( // Asynchronous reduce items, // items - incoming array callback, // callback - function to be executed for each value in array // previous - value previously returned in the last iteration // current - current element being processed in the array // callback - callback for returning value back to function reduce // counter - index of the current element being processed in array // items - the array reduce was called upon done, // optional on done callback function(err, result)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Asynchronous reduce items, // items - incoming array callback, // callback - function to be executed for each value in array // previous - value previously returned in the last iteration // current - current element being processed in the array // callback - callback for returning value back to function reduce // counter - index of the current element being processed in array // items - the array reduce was called upon done, // optional on done callback function(err, result)
+  //   err - error or null
+  //   result - array result
+  initial // optional value to be used as first arpument in first iteration
+) =&#x3e; {
+  const len = items.length;
+  let count = typeof(initial) === &#x27;undefined&#x27; ? 1 : 0;
+  let previous = count === 1 ? items[0] : initial;
+  let current = items[count];
+  done = api.metasync.cb(done);
+
+  function response(err, data) {
+    if (err) return done(err);
+    if (count === len - 1) return done(null, data);
+    count++;
+    previous = data;
+    current = items[count];
+    callback(previous, current, response, count, items);
+  }
+
+  callback(previous, current, response, count, items);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.sequential" id="apidoc.element.metasync.metasync.sequential">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>sequential
+        <span class="apidocSignatureSpan">( // Sequential execution fns, // array of function([data, ] callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Sequential execution fns, // array of function([data, ] callback)
+  // data - incoming data
+  // callback - function(data)
+  //   data - outgoing data
+  done, // on done callback(data)
+  // data - hash with of functions results
+  data = {} // incoming data
+) =&#x3e; {
+  let i = -1;
+  const len = fns.length;
+  done = api.metasync.cb(done);
+
+  function next() {
+    let fn = null;
+    const finish = (result) =&#x3e; {
+      if (fn.name &#x26;&#x26; result) data[fn.name] = result;
+      if (result instanceof Error) return done(result);
+      next();
+    };
+    if (++i &#x3e;= len) return done(data);
+    fn = fns[i];
+    if (Array.isArray(fn)) api.metasync.composition(fn, finish, data);
+    else if (fn.length === 2) fn(data, finish);
+    else fn(finish);
+  }
+
+  if (len &#x3e; 0) next();
+  else done(data);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```JavaScript
+metasync.parallel([f1, f2, f3], () =&#x3e;  { ... });
+```
+
+## Sequential execution
+
+```JavaScript
+metasync.<span class="apidocCodeKeywordSpan">sequential</span>([f1, f2, f3], () =&#x3e; { ... });
+```
+
+## Asynchrous filter
+
+```JavaScript
+metasync.filter([&#x27;data&#x27;, &#x27;to&#x27;, &#x27;filter&#x27;], (item, callback) =&#x3e; {
+callback(item.length &#x3e; 2);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.series" id="apidoc.element.metasync.metasync.series">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>series
+        <span class="apidocSignatureSpan">( // Asynchronous series items, // incoming array fn, // function(value, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Asynchronous series items, // incoming array fn, // function(value, callback)
+  // value - item from items array
+  // callback - callback function(accepted)
+  //   err - instance of Error or null
+  done // optional on done callback function(err)
+  //   err - error or null
+) =&#x3e; {
+  const len = items.length;
+  let i = -1;
+  done = api.metasync.cb(done);
+
+  function next() {
+    i++;
+    if (i &#x3e;= len) return done();
+    fn(items[i], (err) =&#x3e; {
+      if (err instanceof Error) return done(err);
+      setImmediate(next);
+    });
+  }
+
+  next();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+);
+```
+
+## Asyncronous series (sequential)
+
+```JavaScript
+metasync.<span class="apidocCodeKeywordSpan">series</span>(
+[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;],
+(item, callback) =&#x3e; {
+  console.dir({ series: item });
+  callback();
+},
+(data) =&#x3e; {
+  console.dir(&#x27;series done&#x27;);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.throttle" id="apidoc.element.metasync.metasync.throttle">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>throttle
+        <span class="apidocSignatureSpan">( // Function throttling timeout, // time interval fn, // function to be executed once per timeout args // arguments array for fn (optional)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Function throttling timeout, // time interval fn, // function to be executed once per timeout args // arguments array for fn (optional)
+) =&#x3e; {
+  let timer = null;
+  let wait = false;
+  return function throttled() {
+    if (!timer) {
+      timer = setTimeout(() =&#x3e; {
+        timer = null;
+        if (wait) throttled();
+      }, timeout);
+      if (args) fn(...args);
+      else fn();
+      wait = false;
+    } else {
+      wait = true;
+    }
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.metasync.metasync.timeout" id="apidoc.element.metasync.metasync.timeout">
+        function <span class="apidocSignatureSpan">metasync.metasync.</span>timeout
+        <span class="apidocSignatureSpan">( // Set timeout for function execution timeout, // time interval asyncFunction, // async function to be executed // done - callback function done // callback function on done )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">( // Set timeout for function execution timeout, // time interval asyncFunction, // async function to be executed // done - callback function done // callback function on done ) =&#x3e; {
+  let finished = false;
+  done = api.metasync.cb(done);
+
+  const timer = setTimeout(() =&#x3e; {
+    if (!finished) {
+      finished = true;
+      done();
+    }
+  }, timeout);
+
+  asyncFunction(() =&#x3e; {
+    if (!finished) {
+      clearTimeout(timer);
+      finished = true;
+      done();
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
