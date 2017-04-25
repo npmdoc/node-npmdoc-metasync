@@ -1,6 +1,6 @@
 # npmdoc-metasync
 
-#### api documentation for  [metasync (v0.2.1)](https://github.com/metarhia/MetaSync#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-metasync.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-metasync) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-metasync.svg)](https://travis-ci.org/npmdoc/node-npmdoc-metasync)
+#### basic api documentation for  [metasync (v0.2.1)](https://github.com/metarhia/MetaSync#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-metasync.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-metasync) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-metasync.svg)](https://travis-ci.org/npmdoc/node-npmdoc-metasync)
 
 #### Metasync is a Meta Async Programming Approach
 
@@ -104,7 +104,8 @@
         "lint": "eslint .",
         "test": "node tests/examples && node tests/chain && npm run lint"
     },
-    "version": "0.2.1"
+    "version": "0.2.1",
+    "bin": {}
 }
 ```
 
